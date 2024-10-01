@@ -52,6 +52,23 @@ public struct DeviceInfo {
     public static let isDarkMode: Bool = { NSApp?.effectiveAppearance.isDarkMode ?? false }()
     #elseif canImport(WatchKit)
     #endif
+    
+    #if canImport(UIKit)
+    static let appIcon: UIImage? = getAppIcon()
+    static func getAppIcon() -> UIImage? {
+        if let iconsDictionary = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any],
+           let primaryIconsDictionary = iconsDictionary["CFBundlePrimaryIcon"] as? [String: Any],
+           let iconFiles = primaryIconsDictionary["CFBundleIconFiles"] as? [String],
+           let lastIcon = iconFiles.last {
+            return UIImage(named: lastIcon)
+        }
+        return nil
+    }
+    #elseif canImport(AppKit)
+    @MainActor
+    static let appIcon: NSImage = NSApp.applicationIconImage!
+    #elseif canImport(WatchKit)
+    #endif
 }
 
 
