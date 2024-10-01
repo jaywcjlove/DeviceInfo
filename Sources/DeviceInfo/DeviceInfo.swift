@@ -54,19 +54,19 @@ public struct DeviceInfo {
     #endif
     
     #if canImport(UIKit)
-    static let appIcon: UIImage? = getAppIcon()
-    static func getAppIcon() -> UIImage? {
-        if let iconsDictionary = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any],
-           let primaryIconsDictionary = iconsDictionary["CFBundlePrimaryIcon"] as? [String: Any],
-           let iconFiles = primaryIconsDictionary["CFBundleIconFiles"] as? [String],
-           let lastIcon = iconFiles.last {
+    @MainActor
+    public static let appIcon: UIImage? = {
+        if let icons = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any],
+            let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any],
+            let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
+            let lastIcon = iconFiles.last {
             return UIImage(named: lastIcon)
         }
         return nil
-    }
+    }()
     #elseif canImport(AppKit)
     @MainActor
-    static let appIcon: NSImage = NSApp.applicationIconImage!
+    public static let appIcon: NSImage = NSApp.applicationIconImage!
     #elseif canImport(WatchKit)
     #endif
 }

@@ -12,6 +12,14 @@ struct ContentView: View {
     var body: some View {
         
         List {
+            #if os(macOS)
+            Image(nsImage: DeviceInfo.appIcon)
+            #endif
+            #if os(iOS)
+            if let icon = DeviceInfo.appIcon {
+                Image(uiImage: icon)
+            }
+            #endif
             LabelCaption(content: "bundleName") {
                 Text("\(DeviceInfo.bundleName)")
             }
