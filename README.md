@@ -19,4 +19,5 @@ DeviceInfo.systemMajorVersion   // e.g "1"
 DeviceInfo.systemMinorVersion   // e.g "3"
 DeviceInfo.systemPatchVersion   // e.g "0"
 DeviceInfo.appIcon              // -> UIImage | NSImage
+DeviceInfo.copyright            // "Copyright © 2024 Chujiang Wang. All rights reserved."
 ```

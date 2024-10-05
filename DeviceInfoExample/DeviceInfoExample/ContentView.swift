@@ -35,6 +35,9 @@ struct ContentView: View {
             LabelCaption(content: "version") {
                 Text("\(DeviceInfo.version)")
             }
+            LabelCaption(content: "copyright") {
+                Text("\(DeviceInfo.copyright)")
+            }
             
             LabelCaption(content: "isDarkMode") {
                 Text("\(String(describing: DeviceInfo.isDarkMode))")

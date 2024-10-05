@@ -28,6 +28,8 @@ public struct DeviceInfo {
     public static let systemMinorVersion = systemVersion.minorVersion
     public static let systemPatchVersion = systemVersion.patchVersion
     
+    public static let copyright = Bundle.main.object(forInfoDictionaryKey: "NSHumanReadableCopyright") as? String ?? ""
+    
     /// e.g. "iOS"
     @MainActor
     public static var osName: String {
