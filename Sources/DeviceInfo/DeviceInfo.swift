@@ -28,7 +28,7 @@ public struct DeviceInfo {
     public static let systemMinorVersion = systemVersion.minorVersion
     public static let systemPatchVersion = systemVersion.patchVersion
     
-    public static let appIsSandboxed: Bool {
+    public static var appIsSandboxed: Bool {
         ProcessInfo.processInfo.environment["APP_SANDBOX_CONTAINER_ID"] != nil
     }
     
