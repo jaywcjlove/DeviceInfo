@@ -28,6 +28,10 @@ public struct DeviceInfo {
     public static let systemMinorVersion = systemVersion.minorVersion
     public static let systemPatchVersion = systemVersion.patchVersion
     
+    public static let appIsSandboxed: Bool {
+        ProcessInfo.processInfo.environment["APP_SANDBOX_CONTAINER_ID"] != nil
+    }
+    
     public static let copyright = Bundle.main.object(forInfoDictionaryKey: "NSHumanReadableCopyright") as? String ?? ""
     
     /// e.g. "iOS"

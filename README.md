@@ -20,4 +20,10 @@ DeviceInfo.systemMinorVersion   // e.g "3"
 DeviceInfo.systemPatchVersion   // e.g "0"
 DeviceInfo.appIcon              // -> UIImage | NSImage
 DeviceInfo.copyright            // "Copyright © 2024 Chujiang Wang. All rights reserved."
+
+DeviceInfo.appIsSandboxed       // e.g `true`
 ```
+
+## License
+
+Licensed under the MIT License.
